@@ -1,0 +1,177 @@
+# baseURI: http://example.org/questionnaire
+# imports: http://ikm-group.ch/archimeo/apqc
+# imports: http://ikm-group.ch/archimeo/fbpdo
+
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix questionnaire: <http://example.org/questionnaie#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+questionnaire:APQC_question
+  rdf:type owl:Class ;
+  rdfs:label "APQC question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+questionnaire:APQCquestion_is_answered_by_the_APQC
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain questionnaire:APQC_question ;
+  rdfs:label "APQCquestion is answered by the APQC" ;
+  rdfs:range <http://ikm-group.ch/archimeo/apqc#AmericanProductivityAndQualityCenter> ;
+.
+questionnaire:ActionAndObjectAnswer
+  rdf:type owl:Class ;
+  rdfs:label "Action and object answer - here I would put the FBPDO" ;
+  rdfs:subClassOf questionnaire:Answer ;
+.
+questionnaire:ActionAndObjectQuestion
+  rdf:type owl:Class ;
+  rdfs:label "Action and object question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+questionnaire:Activity_Level
+  rdf:type questionnaire:AnnotationLevelAnswer ;
+  rdfs:label "Activity Level" ;
+.
+questionnaire:AnnotationLevelAnswer
+  rdf:type owl:Class ;
+  rdfs:label "Annotation level answer" ;
+  rdfs:subClassOf questionnaire:Answer ;
+.
+questionnaire:AnnotationLevelQuestion
+  rdf:type owl:Class ;
+  rdfs:label "Annotation level question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+questionnaire:AnnotationLevelQuestionIsFollowedByAPQC_question
+  rdf:type rdf:Property ;
+  rdfs:domain questionnaire:AnnotationLevelQuestion ;
+  rdfs:label "is followed by" ;
+  rdfs:range questionnaire:APQC_question ;
+.
+questionnaire:Answer
+  rdf:type owl:Class ;
+  rdfs:label "Answer" ;
+  rdfs:subClassOf owl:Thing ;
+.
+questionnaire:AnswerHasType
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain questionnaire:Answer ;
+  rdfs:label "Answer has type" ;
+  rdfs:range questionnaire:AnswerType ;
+.
+questionnaire:AnswerType
+  rdf:type owl:Class ;
+  rdfs:label "Answer type" ;
+  rdfs:subClassOf owl:Thing ;
+.
+questionnaire:DataSecurityAnswer
+  rdf:type owl:Class ;
+  rdfs:label "Data security answer" ;
+  rdfs:subClassOf questionnaire:Answer ;
+.
+questionnaire:DataSecurityQuestion
+  rdf:type owl:Class ;
+  rdfs:label "Data security question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+<http://example.org/questionnaie#Do_you_want_to_discover_services_on_a_process_level,_on_a_group_activity_level_or_on_an_activity_level?>
+  rdf:type questionnaire:AnnotationLevelQuestion ;
+  questionnaire:AnnotationLevelQuestionIsFollowedByAPQC_question <http://example.org/questionnaie#Which_area_does_the_activity_belong_to?> ;
+  questionnaire:annotationLevelQuestionIsAnsweredByAnnotationLevelAnswer questionnaire:Process_Level ;
+  rdfs:label "Do you want to discover services on a process level, on a group activity level or on an activity level?" ;
+.
+<http://example.org/questionnaie#Do_you_want_to_specify_more_in_detail_the_activity_in_terms_of__«action»_and_«object»?_>
+  rdf:type questionnaire:ActionAndObjectQuestion ;
+  rdfs:label " " ;
+.
+questionnaire:Group_Activity_Level
+  rdf:type questionnaire:AnnotationLevelAnswer ;
+  rdfs:label "Group Activity Level" ;
+.
+questionnaire:MultiSelection
+  rdf:type questionnaire:AnswerType ;
+  rdfs:label "Multi selection" ;
+.
+questionnaire:PaymentAnswer
+  rdf:type owl:Class ;
+  rdfs:label "Payment answer" ;
+  rdfs:subClassOf questionnaire:Answer ;
+.
+questionnaire:PaymentQuestion
+  rdf:type owl:Class ;
+  rdfs:label "Payment question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+questionnaire:PerformanceAnswer
+  rdf:type owl:Class ;
+  rdfs:label "Performance answer" ;
+  rdfs:subClassOf questionnaire:Answer ;
+.
+questionnaire:PerformanceQuestion
+  rdf:type owl:Class ;
+  rdfs:label "Performance question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+questionnaire:Process_Level
+  rdf:type questionnaire:AnnotationLevelAnswer ;
+  rdfs:label "Process Level" ;
+.
+questionnaire:Question
+  rdf:type owl:Class ;
+  rdfs:label "Question" ;
+  rdfs:subClassOf owl:Thing ;
+.
+questionnaire:ServiceSupportAnswer
+  rdf:type owl:Class ;
+  rdfs:label "Service support answer" ;
+  rdfs:subClassOf questionnaire:Answer ;
+.
+questionnaire:ServiceSupportQuestion
+  rdf:type owl:Class ;
+  rdfs:label "Service support question" ;
+  rdfs:subClassOf questionnaire:Question ;
+.
+questionnaire:SingleSelection
+  rdf:type questionnaire:AnswerType ;
+  rdfs:label "Single selection" ;
+.
+questionnaire:ValueEntry
+  rdf:type questionnaire:AnswerType ;
+  rdfs:label "Value entry" ;
+.
+<http://example.org/questionnaie#Which_area_does_the_activity_belong_to?>
+  rdf:type questionnaire:APQC_question ;
+  rdfs:label "Which area does the activity belong to?" ;
+.
+<http://example.org/questionnaie#Which_area_does_the_group_activity_belong_to?>
+  rdf:type questionnaire:APQC_question ;
+  rdfs:label "Which area does the group activity belong to?" ;
+.
+<http://example.org/questionnaie#Which_area_does_the_process_belong_to?>
+  rdf:type questionnaire:APQC_question ;
+  rdfs:label "Which area does the process belong to?" ;
+.
+questionnaire:annotationLevelQuestionIsAnsweredByAnnotationLevelAnswer
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain questionnaire:AnnotationLevelQuestion ;
+  rdfs:label "annotation level question is answered by annotation level answer" ;
+  rdfs:range questionnaire:AnnotationLevelAnswer ;
+.
+<http://example.org/questionnaire>
+  rdf:type owl:Ontology ;
+  owl:imports <http://ikm-group.ch/archimeo/apqc> ;
+  owl:imports <http://ikm-group.ch/archimeo/fbpdo> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+<http://example.org/questionnaire#What_is_an_acceptable_downtime_in_minutes?>
+  rdf:type questionnaire:PerformanceQuestion ;
+  rdfs:label "What is an acceptable downtime in minutes?" ;
+.
+<http://ikm-group.ch/archimeo/apqc#AmericanProductivityAndQualityCenter>
+  rdfs:subClassOf questionnaire:Answer ;
+.
